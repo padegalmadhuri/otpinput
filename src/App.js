@@ -5,13 +5,13 @@ const App = () => {
   const [inputno, setInput] = useState();
   const [numbers, setNumbers] = useState([]);
 
-  const addNumber = (event) => {
+  const displayInput = (event) => {
     event.preventDefault();
     let allValues = [];
     for (let i = 1; i <= parseInt(inputno); i++) {
       allValues = [...allValues, { value: "", id: i }];
     }
-    // console.log(allValues);
+    console.log(allValues);
     setNumbers(allValues);
   };
 
@@ -19,14 +19,14 @@ const App = () => {
     if (event.target.value === "") {
       return;
     }
-    // console.log(numbers);
+     console.log(numbers);
     const changedValue = numbers.map((value) => {
       if (value.id === id) {
         const updatedValues = {
           ...value,
           value: event.target.value,
         };
-        // console.log(updatedValues);
+        console.log(updatedValues);
         return updatedValues;
       }
       return value;
@@ -75,7 +75,7 @@ const App = () => {
           />
           <button
             className="btn btn-success mt-3"
-            onClick={(event) => addNumber(event)}
+            onClick={(event) => displayInput(event)}
           >
             Submit
           </button>
@@ -92,6 +92,7 @@ const App = () => {
                 type="number"
                 // autoFocus="true"
                 autoComplete="off"
+                //for Mobile
                 inputMode='numeric' 
                 pattern="[0-9]"
                 id = {num.id}
